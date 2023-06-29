@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="navbar">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#updates">Updates</a></li> <!-- Dodany identyfikator do sekcji "Updates" -->
+          </ul>
+        </div>
+    
+        <div id="home" class="home">
+          <div class="home-inner">
+            <img src="home.png" alt="Opis obrazu">
+          </div>
+        </div>
+    
+        <div id="about" class="about">
+          <div class="about-inner">
+            <img src="about.png" alt="Opis obrazu">
+          </div>
+        </div>
+    
+        <div id="projects" class="projects">
+            <div class="project-item">
+              <img src="p1.png" alt="Projekt 1">
+            </div>
+            <div class="project-item">
+              <img src="p2.png" alt="Projekt 2">
+              <div class="isometry" id="isometry-link">Isometry</div>
+              <div class="website" id="website-link">Website graphics</div>
+              <div class="others" id="others-link">Others</div>
+              <div class="animations" id="animations-link">Animations</div>
+            </div>
+        </div>
+    
+        <div id="updates"></div>
+        <div class="popup-container"></div>
+      </div>
+
+  <script>
+    const navbarLinks = document.querySelectorAll('.navbar a');
+    const sections = document.querySelectorAll('.content > div');
+
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const targetSection = document.getElementById(targetId);
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    let popupContainer = document.querySelector('.popup-container'); // Przeniesienie deklaracji poza event listener
+    const updatesLink = document.querySelector('.navbar li:nth-child(4) a');
+    updatesLink.addEventListener('click', () => {
+      if (!popupContainer) {
+        popupContainer = document.createElement('div'); // Tworzenie nowego elementu tylko jeśli nie istnieje
+        popupContainer.classList.add('popup-container');
+        document.body.appendChild(popupContainer);
+      }
+
+      const popup = document.createElement('div');
+      const popupText = document.createElement('div');
+
+      popup.classList.add('popup');
+      popupText.textContent = 'Soon';
+
+      popup.appendChild(popupText);
+      popupContainer.appendChild(popup);
+
+      setTimeout(() => {
+        popupContainer.classList.add('active');
+      }, 10);
+
+      popupContainer.addEventListener('click', () => {
+        popupContainer.classList.remove('active');
+        setTimeout(() => {
+          popupContainer.removeChild(popup);
+        }, 300);
+      });
+    });
+
+    document.addEventListener('click', () => {
+      if (popupContainer && popupContainer.classList.contains('active')) {
+        popupContainer.classList.remove('active');
+        setTimeout(() => {
+          popupContainer.removeChild(popupContainer.firstChild);
+        }, 300);
+      }
+    });
+
+    const isometryLink = document.getElementById('isometry-link');
+    isometryLink.addEventListener('click', () => {
+      window.location.href = 'isometry.html';
+    });
+
+    const websiteLink = document.getElementById('website-link');
+    websiteLink.addEventListener('click', () => {
+      window.location.href = 'website.html';
+    });
+
+    const othersLink = document.getElementById('others-link');
+    othersLink.addEventListener('click', () => {
+      window.location.href = 'others.html';
+    });
+
+    const animationsLink = document.getElementById('animations-link');
+    animationsLink.addEventListener('click', () => {
+      window.location.href = 'animations.html';
+    });
+
+  </script>
+</body>
+</html>
