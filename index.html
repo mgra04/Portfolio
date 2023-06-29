@@ -102,22 +102,30 @@
 
     const isometryLink = document.getElementById('isometry-link');
     isometryLink.addEventListener('click', () => {
-      window.location.href = 'subpages/isometry.html';
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.split('/').slice(0, -1).join('/') + '/subpages/isometry.html';
+    window.location.href = newPath;
     });
 
     const websiteLink = document.getElementById('website-link');
     websiteLink.addEventListener('click', () => {
-      window.location.href = 'subpages/website.html';
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.split('/').slice(0, -1).join('/') + '/subpages/website.html';
+    window.location.href = newPath;
     });
 
     const othersLink = document.getElementById('others-link');
     othersLink.addEventListener('click', () => {
-      window.location.href = 'subpages/others.html';
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.split('/').slice(0, -1).join('/') + '/subpages/others.html';
+    window.location.href = newPath;
     });
 
     const animationsLink = document.getElementById('animations-link');
     animationsLink.addEventListener('click', () => {
-      window.location.href = 'subpages/animations.html';
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.split('/').slice(0, -1).join('/') + '/subpages/animations.html';
+    window.location.href = newPath;
     });
 
   </script>
