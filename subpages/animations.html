@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animations</title>
+  <style>
+
+    @font-face {
+    font-family: 'Arista Pro Alternate Bold';
+    src: url('Arista-Pro-Alternate-Bold-trial.ttf') format('truetype');
+    }
+
+    @font-face {
+    font-family: 'Arista Pro Alternate Fat';
+    src: url('Arista-Pro-Alternate-Fat-trial.ttf') format('truetype');
+    }
+
+    @font-face {
+    font-family: 'Arista Pro Alternate Light';
+    src: url('Arista-Pro-Alternate-Light-trial.ttf') format('truetype');
+    }
+
+    @font-face {
+    font-family: 'Arista Pro Alternate Regular';
+    src: url('Arista-Pro-Alternate-Regular-trial.ttf') format('truetype');
+    }
+
+    @font-face {
+    font-family: 'Arista Pro Alternate SemiBold';
+    src: url('Arista-Pro-Alternate-SemiBold-trial.ttf') format('truetype');
+    }
+
+    body {
+      background-color: #dddddd;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arista Pro Alternate Regular', sans-serif;
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .video-wrapper {
+      width: 40%;
+      margin-bottom: 60px;
+    }
+    video {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      background-color: #000000;
+    }
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 40px;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        color: #000000;
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin-bottom: 100px;
+    }
+
+    .button:hover {
+      background-color: #eeeeee;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .popup-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .popup-container.active {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .popup {
+      width: 200px;
+      height: 200px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+    }
+
+    .popup div {
+      font-size: 50px;
+      font-family: 'Arista Pro Alternate SemiBold', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-container">
+    <div class="video-wrapper">
+      <video src="a1.mp4" autoplay loop controls></video>
+    </div>
+    <div class="video-wrapper">
+      <video src="a2.mp4" autoplay loop controls></video>
+    </div>
+
+    <div class="button" id="animations-link">More</div>
+
+<script>
+
+    const animationsLink = document.getElementById('animations-link');
+    animationsLink.addEventListener('click', () => {
+    const popupContainer = document.createElement('div');
+    const popup = document.createElement('div');
+    const popupText = document.createElement('div');
+
+    popupContainer.classList.add('popup-container');
+    popup.classList.add('popup');
+    popup.style.width = '300px';
+    popup.style.height = '150px';
+    popup.style.backgroundColor = 'white';
+
+    popupText.textContent = 'In progress';
+    popupText.style.color = 'black';
+    popupText.style.fontSize = '50px';
+    popupText.style.textAlign = 'center';
+    popupText.style.position = 'absolute';
+    popupText.style.top = '50%';
+    popupText.style.left = '50%';
+    popupText.style.transform = 'translate(-50%, -50%)';
+
+    popup.appendChild(popupText);
+    popupContainer.appendChild(popup);
+    document.body.appendChild(popupContainer);
+
+    setTimeout(() => {
+      popupContainer.classList.add('active');
+    }, 10);
+
+    popupContainer.addEventListener('click', () => {
+      popupContainer.classList.remove('active');
+      setTimeout(() => {
+        document.body.removeChild(popupContainer);
+      }, 300);
+    });
+  });
+
+</script>
+</body>
+</html>
