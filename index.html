@@ -4,6 +4,9 @@
   <title>Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="content">
@@ -12,7 +15,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#updates">Updates</a></li> <!-- Dodany identyfikator do sekcji "Updates" -->
+            <li><a href="#updates">Updates</a></li>
           </ul>
         </div>
     
@@ -61,11 +64,11 @@
       });
     });
 
-    let popupContainer = document.querySelector('.popup-container'); // Przeniesienie deklaracji poza event listener
+    let popupContainer = document.querySelector('.popup-container');
     const updatesLink = document.querySelector('.navbar li:nth-child(4) a');
     updatesLink.addEventListener('click', () => {
       if (!popupContainer) {
-        popupContainer = document.createElement('div'); // Tworzenie nowego elementu tylko jeśli nie istnieje
+        popupContainer = document.createElement('div');
         popupContainer.classList.add('popup-container');
         document.body.appendChild(popupContainer);
       }
@@ -74,7 +77,7 @@
       const popupText = document.createElement('div');
 
       popup.classList.add('popup');
-      popupText.textContent = 'Soon';
+      popupText.textContent = '04.07.2023 - New website graphic "BlobPay"';
 
       popup.appendChild(popupText);
       popupContainer.appendChild(popup);
