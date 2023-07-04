@@ -135,18 +135,18 @@
     }
 
     .popup {
-      width: 200px;
-      height: 200px;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 20px;
+        display: flex;
+        position: absolute;
+        padding: 30px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        width: fit-content;
     }
 
     .popup div {
       font-size: 50px;
-      font-family: 'Arista Pro Alternate SemiBold', sans-serif;
+      font-family: 'Nunito', sans-serif;
     }
 
     /* Div "home" */
